@@ -22,7 +22,7 @@ def main(argv):
         sys.exit(2)
 
     show = False
-    overlay_name = "default"
+    overlay_name = "default.yml"
     all_overlays = False
 
     for opt, arg in opts:
@@ -41,7 +41,9 @@ def main(argv):
     else:
         todo = [overlay_name]
 
-    os.makedirs("./output")
+    # KJSL: if output exists dont bail
+    if not os.path.exists("./output"):
+        os.makedirs("./output")
 
     for name in todo:
         # ====== OVERLAY ===============================================================
